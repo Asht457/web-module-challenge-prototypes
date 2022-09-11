@@ -72,18 +72,24 @@ this.tank = this.tank + gallons;
         + Should return a string "Playing with x", x being the favorite toy.
 */
 
-function Baby() {
+function Baby(name, age, favoriteToy) {
+Person.call(this, name, age);
+this.favoriteToy = favoriteToy
+}
 
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function() {
+  return `Playing with ${this.favoriteToy}`
 }
 
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Principle 1 is global/window binding, which means when there isn't an object up the parental chain for this to refer to it will instead refer to the window/console.
+  2. principle 2 is implicit binding, which just means that this = the object that precedes the ".", so say Cat is an object, Cat.this means this refers to the Cat object.
+  3. Principle 3 is new Binding, when a constructor function creates instances of an object, this refers to those instances
+  4. Principle 4: explicit binding appears in situations in which .call and .apply are used, we can essentially override what this is pointing to.
 */
 
 ///////// END OF CHALLENGE /////////
